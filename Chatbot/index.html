@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>myPadi</title>
+
+
+  <!-- Include your existing stylesheets and scripts -->
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+ 
+
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Fonts Link For Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+  
+  <style>
+    /* Typing animation styles */
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    #typing-text {
+      overflow: hidden;
+      border-right: 0.15em solid #ffffff; /* Adjust the color as needed */
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.15em;
+      animation: typing 10s steps(30, end);
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=LRN2MCWD"></script>
+  <button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+
+
+  <div class="chatbot">
+    <header>
+      <h2>myPadi</h2>
+      <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+      <li class="chat incoming"></li>
+    </ul>
+
+    <!-- Replace the existing speech-input div with this code -->
+<div class="chat-input">
+  <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+  <div class="speech-input">
+    <span id="mic-icon" class="material-symbols-rounded">mic</span>
+  </div>
+  <span id="send-btn" class="material-symbols-rounded">send</span>
+</div>
+  </div>
+
+  <!-- Added bold text with typing animation -->
+  <p id="typing-text" style="font-weight: bold;">Chatbot built by Richard Chukwu........</p>
+
+  <!-- Include face-api.js -->
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const typingText = document.getElementById("typing-text");
+      setTimeout(function () {
+        typingText.style.borderRight = "none";
+      }, 30000);
+  
+      // Speech recognition setup
+      const micIcon = document.getElementById("mic-icon");
+      const recognition = new webkitSpeechRecognition();
+  
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        const inputTextArea = document.querySelector(".chat-input textarea");
+        inputTextArea.value = transcript;
+      };
+  
+      micIcon.addEventListener("click", () => {
+        recognition.start();
+      });
+    });
+
+    // JavaScript to handle the typing animation
+    document.addEventListener("DOMContentLoaded", function () {
+      const typingText = document.getElementById("typing-text");
+      setTimeout(function () {
+        typingText.style.borderRight = "none"; // Remove border after typing animation
+      }, 30000); // Set the animation duration (10s in this example)
+    });
+
+    // OpenCV.js initialization callback
+    function onOpenCvReady() {
+      // Start facial recognition when OpenCV.js is ready
+      initFacialRecognition();
+    }
+
+  </script>
+</body>
+</html>
